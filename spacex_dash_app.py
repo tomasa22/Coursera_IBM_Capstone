@@ -7,7 +7,7 @@ from dash.dependencies import Input, Output
 import plotly.express as px
 
 
-spacex_df = pd.read_csv('D:\\learning\\coursera\\notebooks\\capstone\\spacex_launch_dash.csv')
+spacex_df = pd.read_csv('C:\\Users\\00024350\\praca\\learning\\coursera\\IBM_data_science\\notebooks\\spacex_launch_dash.csv')
 max_payload = spacex_df['Payload Mass (kg)'].max()
 min_payload = spacex_df['Payload Mass (kg)'].min()
 
@@ -59,12 +59,12 @@ app.layout = html.Div(children=[html.H1('SpaceX Launch Records Dashboard',
 
 def build_graph(site_dropdown):
     if site_dropdown == 'ALL':
-        piechart = px.pie(data_frame = spacex_df, names='Launch Site', values='class' ,title='Total Launches for All Sites')
+        piechart = px.pie(data_frame = spacex_df, names='Launch Site', values='class' ,title='Total Successful Launches for All Sites')
         return piechart
     else:
         #specific_df = spacex_df['Launch Site']
         specific_df=spacex_df.loc[spacex_df['Launch Site'] == site_dropdown]
-        piechart = px.pie(data_frame = specific_df, names='class',title='Total Launch for a Specific Site')
+        piechart = px.pie(data_frame = specific_df, names='class',title='Total Succesfull Launch for a Specific Site')
         return piechart
 
 # TASK 4:
